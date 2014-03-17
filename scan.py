@@ -41,9 +41,9 @@ while(scanNum < maxScans):
     else:
         print "Not found"
 
-    print "Seconds: " + str(seconds)
+    print "Scans: " + str(scanNum)
     #time.sleep(0.5)
-    seconds += 0.5
+    scanNum += 1
     stream = io.BytesIO()
 loopTime = time.time() - startScanTime
 print loopTime    
