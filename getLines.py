@@ -4,7 +4,7 @@ import sys
 
 print sys.argv[1]
 
-img = cv2.imread(sys.argv[1])
+img = cv2.imread(sys.argv[1], 0)
 
 #gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 #mask.png is already binary
