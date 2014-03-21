@@ -6,7 +6,8 @@ print sys.argv[1]
 
 img = cv2.imread(sys.argv[1])
 
-gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+#gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+#mask.png is already binary
 edges = cv2.Canny(gray,50,150,apertureSize = 3)
 
 lines = cv2.HoughLines(edges,1,np.pi/180,200)
