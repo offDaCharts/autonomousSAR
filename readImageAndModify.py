@@ -30,6 +30,6 @@ res = cv2.bitwise_and(image,image, mask= mask)
 
 cv2.imwrite('frame.png',image)
 cv2.imwrite('mask.png',mask)
-cv2.imwrite('res.png',res)
+cv2.imwrite('res.jpg',res)
 
 
