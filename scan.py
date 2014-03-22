@@ -25,7 +25,7 @@ while(scanNum < maxScans):
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
     # define range of orange color in HSV
-    lower_orange = np.array([0,120,50])
+    lower_orange = np.array([0,100,50])
     upper_orange = np.array([30,250,250])
 
     # Threshold the HSV image to get only orange colors
