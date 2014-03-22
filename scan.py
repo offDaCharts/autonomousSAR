@@ -6,7 +6,7 @@ import numpy as np
 
 camera = picamera.PiCamera()
 
-maxScans = 20
+maxScans = 100
 scanNum = 0
 
 stream = io.BytesIO()
@@ -79,7 +79,7 @@ while(scanNum < maxScans):
     #     print "Not found"
 
     if starAngleCount > 1:
-        print "Found it!"
+        print "Found it!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     else:
         print "Not found"
 
