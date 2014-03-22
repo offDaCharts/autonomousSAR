@@ -53,7 +53,7 @@ for rho1,theta in lines[0]:
         if (angle < upperAngle and angle > lowerAngle) or (complement > lowerAngle and complement < upperAngle):
             starAngleCount += 1
 
-print "starAngleCount: " + starAngleCount/2
+print "starAngleCount: " + str(starAngleCount/2)
 
 
 
