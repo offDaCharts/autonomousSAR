@@ -35,33 +35,34 @@ while(scanNum < maxScans):
 
     lines = cv2.HoughLines(edges,1,np.pi/180,100)
 
-    lowerAngle = 30
-    upperAngle = 40
+    lowerAngle = 20
+    upperAngle = 50
 
     starAngleCount = 0
-    for rho1,theta in lines[0]:
-        theta = theta/np.pi*180
-        for rho2,phi in lines[0]:
-            phi = phi/np.pi*180
-            angle = 0
-            complement = 180 - angle
-            if rho1 > 0 and rho2 > 0:
-                angle = 180 - abs(theta - phi)
+    if len(lines) > 0:
+        for rho1,theta in lines[0]:
+            theta = theta/np.pi*180
+            for rho2,phi in lines[0]:
+                phi = phi/np.pi*180
+                angle = 0
                 complement = 180 - angle
-            elif rho1 < 0 and rho2 > 0:
-                phiPrime = 180 - phi
-                angle = 180 - theta - phiPrime
-                complement = 180 - angle
-            elif rho1 > 0 and rho2 < 0:
-                thetaPrime = 180 - theta
-                angle = 180 - thetaPrime - phi
-                complement = 180 - angle
-            elif rho1 < 0 and rho2 < 0:
-                angle = 180 - abs(theta - phi)
-                complement = 180 - angle
-            print angle
-            if (angle < upperAngle and angle > lowerAngle) or (complement > lowerAngle and complement < upperAngle):
-                starAngleCount += 1
+                if rho1 > 0 and rho2 > 0:
+                    angle = 180 - abs(theta - phi)
+                    complement = 180 - angle
+                elif rho1 < 0 and rho2 > 0:
+                    phiPrime = 180 - phi
+                    angle = 180 - theta - phiPrime
+                    complement = 180 - angle
+                elif rho1 > 0 and rho2 < 0:
+                    thetaPrime = 180 - theta
+                    angle = 180 - thetaPrime - phi
+                    complement = 180 - angle
+                elif rho1 < 0 and rho2 < 0:
+                    angle = 180 - abs(theta - phi)
+                    complement = 180 - angle
+                print angle
+                if (angle < upperAngle and angle > lowerAngle) or (complement > lowerAngle and complement < upperAngle):
+                    starAngleCount += 1
 
     print "starAngleCount: " + str(starAngleCount/2)
 
