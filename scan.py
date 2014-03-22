@@ -35,8 +35,8 @@ while(scanNum < maxScans):
 
     lines = cv2.HoughLines(edges,1,np.pi/180,100)
 
-    lowerAngle = 20
-    upperAngle = 50
+    lowerAngle = 25
+    upperAngle = 45
 
     starAngleCount = 0
     if lines != None and len(lines) > 0:
