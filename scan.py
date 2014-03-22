@@ -31,12 +31,53 @@ while(scanNum < maxScans):
     # Threshold the HSV image to get only orange colors
     mask = cv2.inRange(hsv, lower_orange, upper_orange)
 
-    count = np.sum(mask)/255
+    edges = cv2.Canny(mask,50,150,apertureSize = 3)
 
-    # Currently checking just by count of pixels matched
-    # TODO by shape
-    print "count: " + str(count)
-    if count > 1000000/255:
+    lines = cv2.HoughLines(edges,1,np.pi/180,100)
+
+    lowerAngle = 40
+    upperAngle = 30
+
+    starAngleCount = 0
+    for rho1,theta in lines[0]:
+        theta = theta/np.pi*180
+        for rho2,phi in lines[0]:
+            phi = phi/np.pi*180
+            angle = 0
+            complement = 180 - angle
+            if rho1 > 0 and rho2 > 0:
+                angle = 180 - abs(theta - phi)
+                complement = 180 - angle
+            elif rho1 < 0 and rho2 > 0:
+                phiPrime = 180 - phi
+                angle = 180 - theta - phiPrime
+                complement = 180 - angle
+            elif rho1 > 0 and rho2 < 0:
+                thetaPrime = 180 - theta
+                angle = 180 - thetaPrime - phi
+                complement = 180 - angle
+            elif rho1 < 0 and rho2 < 0:
+                angle = 180 - abs(theta - phi)
+                complement = 180 - angle
+            print angle
+            if (angle < upperAngle and angle > lowerAngle) or (complement > lowerAngle and complement < upperAngle):
+                starAngleCount += 1
+
+    print "starAngleCount: " + str(starAngleCount/2)
+
+    # Scanning by pixel count
+
+    # count = np.sum(mask)/255
+
+    # # Currently checking just by count of pixels matched
+    # # TODO by shape
+    # print "count: " + str(count)
+    # if count > 1000000/255:
+    #     print "Found it!"
+    # else:
+    #     print "Not found"
+
+    if starAngleCount > 1:
         print "Found it!"
     else:
         print "Not found"
