@@ -62,6 +62,7 @@ while(scanNum < maxScans):
                     complement = 180 - angle
                 #print angle
                 if (angle < upperAngle and angle > lowerAngle) or (complement > lowerAngle and complement < upperAngle):
+                    print angle
                     starAngleCount += 1
 
     print "starAngleCount: " + str(starAngleCount/2)
