@@ -3,6 +3,13 @@ import time
 import picamera
 import cv2
 import numpy as np
+import RPi.GPIO as GPIO ## Import GPIO library
+
+
+GPIO.setmode(GPIO.BOARD) ## Use board pin numbering
+GPIO.setup(7, GPIO.OUT) ## Setup GPIO Pin 7 to OUT
+
+GPIO.output(7,False)
 
 camera = picamera.PiCamera()
 
@@ -80,8 +87,10 @@ while(scanNum < maxScans):
     #     print "Not found"
 
     if starAngleCount > 1:
+        GPIO.output(7,True)
         print "Found it!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     else:
+        GPIO.output(7,False)
         print "Not found"
 
     print "Scans: " + str(scanNum+1)
