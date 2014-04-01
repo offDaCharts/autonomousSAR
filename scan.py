@@ -13,7 +13,7 @@ GPIO.output(7,False)
 
 camera = picamera.PiCamera()
 
-maxScans = 100
+maxScans = 10000
 scanNum = 0
 
 stream = io.BytesIO()
