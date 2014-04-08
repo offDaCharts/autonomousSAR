@@ -5,7 +5,7 @@ import cv2
 import numpy as np
 import RPi.GPIO as GPIO ## Import GPIO library
 import sys
-sys.stdout = open('log.txt', 'w')
+#sys.stdout = open('log.txt', 'w')
 
 
 GPIO.setmode(GPIO.BOARD) ## Use board pin numbering
