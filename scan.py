@@ -96,7 +96,9 @@ while(scanNum < maxScans):
         print "Not found"
 
     print "Scans: " + str(scanNum+1)
-    #time.sleep(0.5)
+    
+    time.sleep(2)
+    
     scanNum += 1
     stream = io.BytesIO()
 loopTime = time.time() - startScanTime
