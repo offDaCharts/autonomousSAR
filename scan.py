@@ -42,7 +42,12 @@ while(scanNum < maxScans):
 
     edges = cv2.Canny(mask,50,150,apertureSize = 3)
 
-    lines = cv2.HoughLines(edges,1,np.pi/180,75)
+    #lines = cv2.HoughLines(edges,1,np.pi/180,80)
+
+    minLineLength = 50
+    maxLineGap = 10
+    lines = cv2.HoughLinesP(edges,1,np.pi/180,80,minLineLength,maxLineGap)
+    print "line count: " + str(len(lines))
 
     lowerAngle = 20
     upperAngle = 50
@@ -72,7 +77,7 @@ while(scanNum < maxScans):
                         complement = 180 - angle
                     #print angle
                     if (angle < upperAngle and angle > lowerAngle) or (complement > lowerAngle and complement < upperAngle):
-                        #print angle
+                        print angle
                         starAngleCount += 1
                         break
 
