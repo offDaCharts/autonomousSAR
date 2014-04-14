@@ -44,7 +44,7 @@ while(scanNum < maxScans):
 
     #lines = cv2.HoughLines(edges,1,np.pi/180,80)
 
-    minLineLength = 50
+    minLineLength = 20
     maxLineGap = 10
     lines = cv2.HoughLinesP(edges,1,np.pi/180,80,minLineLength,maxLineGap)
     print "line count: " + str(len(lines))
