@@ -42,6 +42,9 @@ while(scanNum < maxScans):
 
     edges = cv2.Canny(mask,50,150,apertureSize = 3)
 
+    for edge in edges:
+        print edge
+
     #lines = cv2.HoughLines(edges,1,np.pi/180,80)
 
     minLineLength = 20
