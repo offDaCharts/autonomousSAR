@@ -42,11 +42,11 @@ while(scanNum < maxScans):
 
     edges = cv2.Canny(mask,50,150,apertureSize = 3)
 
-    lines = cv2.HoughLines(edges,1,np.pi/180,80)
+    #lines = cv2.HoughLines(edges,1,np.pi/180,80)
 
     minLineLength = 20
     maxLineGap = 10
-    #lines = cv2.HoughLinesP(edges,1,np.pi/180,80,minLineLength,maxLineGap)
+    lines = cv2.HoughLinesP(edges,1,np.pi/180,100,minLineLength,maxLineGap)
     print "line count: " + str(len(lines))
 
     lowerAngle = 20
