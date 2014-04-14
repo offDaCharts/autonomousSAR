@@ -35,7 +35,7 @@ while(scanNum < maxScans):
 
     # define range of orange color in HSV
     lower_orange = np.array([0,100,50])
-    upper_orange = np.array([30,250,250])
+    upper_orange = np.array([30,170,250])
 
     # Threshold the HSV image to get only orange colors
     mask = cv2.inRange(hsv, lower_orange, upper_orange)
@@ -44,8 +44,8 @@ while(scanNum < maxScans):
 
     lines = cv2.HoughLines(edges,1,np.pi/180,100)
 
-    lowerAngle = 25
-    upperAngle = 45
+    lowerAngle = 23
+    upperAngle = 47
 
     starAngleCount = 0
     if lines != None and len(lines) > 0:
@@ -71,7 +71,7 @@ while(scanNum < maxScans):
                     complement = 180 - angle
                 #print angle
                 if (angle < upperAngle and angle > lowerAngle) or (complement > lowerAngle and complement < upperAngle):
-                    print angle
+                    #print angle
                     starAngleCount += 1
 
     print "starAngleCount: " + str(starAngleCount/2)
@@ -97,7 +97,7 @@ while(scanNum < maxScans):
 
     print "Scans: " + str(scanNum+1)
     
-    time.sleep(2)
+    time.sleep(1)
     
     scanNum += 1
     stream = io.BytesIO()
