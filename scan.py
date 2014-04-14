@@ -42,7 +42,7 @@ while(scanNum < maxScans):
 
     edges = cv2.Canny(mask,50,150,apertureSize = 3)
 
-    lines = cv2.HoughLines(edges,1,np.pi/180,50)
+    lines = cv2.HoughLines(edges,1,np.pi/180,75)
 
     lowerAngle = 20
     upperAngle = 50
