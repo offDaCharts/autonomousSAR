@@ -51,7 +51,7 @@ while(scanNum < maxScans):
     if lines != None and len(lines) > 0:
         for rho1,theta in lines[0]:
             theta = theta/np.pi*180
-            if starAngleCount is 0:
+            if starAngleCount < 2:
                 for rho2,phi in lines[0]:
                     phi = phi/np.pi*180
                     angle = 0
