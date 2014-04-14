@@ -51,30 +51,35 @@ while(scanNum < maxScans):
     if lines != None and len(lines) > 0:
         for rho1,theta in lines[0]:
             theta = theta/np.pi*180
-            for rho2,phi in lines[0]:
-                phi = phi/np.pi*180
-                angle = 0
-                complement = 180 - angle
-                if rho1 > 0 and rho2 > 0:
-                    angle = 180 - abs(theta - phi)
+            if starAngleCount is 0:
+                for rho2,phi in lines[0]:
+                    phi = phi/np.pi*180
+                    angle = 0
                     complement = 180 - angle
-                elif rho1 < 0 and rho2 > 0:
-                    phiPrime = 180 - phi
-                    angle = 180 - theta - phiPrime
-                    complement = 180 - angle
-                elif rho1 > 0 and rho2 < 0:
-                    thetaPrime = 180 - theta
-                    angle = 180 - thetaPrime - phi
-                    complement = 180 - angle
-                elif rho1 < 0 and rho2 < 0:
-                    angle = 180 - abs(theta - phi)
-                    complement = 180 - angle
-                #print angle
-                if (angle < upperAngle and angle > lowerAngle) or (complement > lowerAngle and complement < upperAngle):
+                    if rho1 > 0 and rho2 > 0:
+                        angle = 180 - abs(theta - phi)
+                        complement = 180 - angle
+                    elif rho1 < 0 and rho2 > 0:
+                        phiPrime = 180 - phi
+                        angle = 180 - theta - phiPrime
+                        complement = 180 - angle
+                    elif rho1 > 0 and rho2 < 0:
+                        thetaPrime = 180 - theta
+                        angle = 180 - thetaPrime - phi
+                        complement = 180 - angle
+                    elif rho1 < 0 and rho2 < 0:
+                        angle = 180 - abs(theta - phi)
+                        complement = 180 - angle
                     #print angle
-                    starAngleCount += 1
+                    if (angle < upperAngle and angle > lowerAngle) or (complement > lowerAngle and complement < upperAngle):
+                        #print angle
+                        starAngleCount += 1
+                        break
 
-    print "starAngleCount: " + str(starAngleCount/2)
+    #print "starAngleCount: " + str(starAngleCount/2)
+
+
+
 
     # Scanning by pixel count
 
