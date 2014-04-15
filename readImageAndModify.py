@@ -4,6 +4,7 @@ import picamera
 import cv2
 import numpy as np
 import sys
+import string
 
 print sys.argv[1]
 
@@ -14,6 +15,10 @@ hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
 print len(hsv)
 print len(hsv[0])
+
+for row in hsv:
+    rowStr = string.join(map(lambda x: "%03d"%x[0], row), ",")
+    print rowStr
 
 # define range of orange color in HSV
 # lower_orange = np.array([0,120,50])
