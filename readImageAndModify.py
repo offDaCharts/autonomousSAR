@@ -28,8 +28,8 @@ print len(hsv[0])
 #s=180-190
 #v=230-250
 
-lower_orange = np.array([5,180,230])
-upper_orange = np.array([15,190,250])
+lower_orange = np.array([3,175,225])
+upper_orange = np.array([17,195,255])
 
 # Threshold the HSV image to get only blue colors
 mask = cv2.inRange(hsv, lower_orange, upper_orange)
