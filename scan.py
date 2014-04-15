@@ -48,7 +48,8 @@ while(scanNum < maxScans):
 
     lines = cv2.HoughLines(edges,1,np.pi/180,60)
 
-    print "line count: " + str(len(lines))
+    if lines is not None:
+        print "line count: " + str(len(lines))
 
     lowerAngle = 25
     upperAngle = 45
