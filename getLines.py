@@ -50,6 +50,8 @@ for rho1,theta in lines[0]:
             angle = 180 - abs(theta - phi)
             complement = 180 - angle
         print angle
+        print complement
+        print " "
         if (angle < upperAngle and angle > lowerAngle) or (complement > lowerAngle and complement < upperAngle):
             starAngleCount += 1
 
