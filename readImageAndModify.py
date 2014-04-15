@@ -12,6 +12,9 @@ print len(image)
 
 hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
+print len(hsv)
+print len(hsv[0])
+
 # define range of orange color in HSV
 # lower_orange = np.array([0,120,50])
 #upper_orange = np.array([30,250,250])
