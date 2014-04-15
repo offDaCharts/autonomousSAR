@@ -25,8 +25,8 @@ for rho,theta in lines[0]:
 
 cv2.imwrite('houghlines3.jpg',img)
 
-lowerAngle = 40
-upperAngle = 30
+lowerAngle = 45
+upperAngle = 25
 
 starAngleCount = 0
 for rho1,theta in lines[0]:
