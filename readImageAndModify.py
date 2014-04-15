@@ -17,7 +17,7 @@ print len(hsv)
 print len(hsv[0])
 
 for row in hsv:
-    rowStr = string.join(map(lambda x: "%03d"%x[0], row), ",")
+    rowStr = string.join(map(lambda x: "%03d"%x[1], row), ",")
     print rowStr
 
 # define range of orange color in HSV
