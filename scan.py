@@ -34,8 +34,12 @@ while(scanNum < maxScans):
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
     # define range of orange color in HSV
-    lower_orange = np.array([5,100,100])
-    upper_orange = np.array([30,170,200])
+    #h=5-15
+    #s=180-190
+    #v=230-250
+
+    lower_orange = np.array([3,175,225])
+    upper_orange = np.array([17,195,255])
 
     # Threshold the HSV image to get only orange colors
     mask = cv2.inRange(hsv, lower_orange, upper_orange)
@@ -45,15 +49,12 @@ while(scanNum < maxScans):
     for edge in edges:
         print edge
 
-    #lines = cv2.HoughLines(edges,1,np.pi/180,80)
+    lines = cv2.HoughLines(edges,1,np.pi/180,60)
 
-    minLineLength = 20
-    maxLineGap = 10
-    lines = cv2.HoughLinesP(edges,1,np.pi/180,100,minLineLength,maxLineGap)
     print "line count: " + str(len(lines))
 
-    lowerAngle = 20
-    upperAngle = 50
+    lowerAngle = 25
+    upperAngle = 45
 
     starAngleCount = 0
     if lines != None and len(lines) > 0:
