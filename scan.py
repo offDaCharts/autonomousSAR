@@ -77,7 +77,7 @@ while(scanNum < maxScans):
                     elif rho1 < 0 and rho2 < 0:
                         angle = 180 - abs(theta - phi)
                         complement = 180 - angle
-                    print angle
+                    #print angle
                     if (angle < upperAngle and angle > lowerAngle) or (complement > lowerAngle and complement < upperAngle):
                         print angle
                         starAngleCount += 1
