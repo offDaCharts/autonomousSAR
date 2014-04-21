@@ -38,8 +38,8 @@ while(scanNum < maxScans):
     #s=180-190
     #v=230-250
 
-    lower_orange = np.array([5,155,225])
-    upper_orange = np.array([25,225,250])
+    lower_orange = np.array([0,155,225])
+    upper_orange = np.array([25,215,255])
 
     # Threshold the HSV image to get only orange colors
     mask = cv2.inRange(hsv, lower_orange, upper_orange)
