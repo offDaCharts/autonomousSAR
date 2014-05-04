@@ -28,7 +28,7 @@ print len(hsv[0])
 #s=180-190
 #v=230-250
 
-lower_orange = np.array([0,110,130])
+lower_orange = np.array([0,100,100])
 upper_orange = np.array([15,255,255])
 
 # Threshold the HSV image to get only orange colors
