@@ -6,6 +6,7 @@ import numpy as np
 
 time.sleep(45)
 
+
 # Create the in-memory stream
 stream = io.BytesIO()
 with picamera.PiCamera() as camera:
