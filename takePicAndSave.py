@@ -4,7 +4,7 @@ import picamera
 import cv2
 import numpy as np
 
-time.sleep(60)
+time.sleep(45)
 
 # Create the in-memory stream
 stream = io.BytesIO()
