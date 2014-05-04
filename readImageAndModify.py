@@ -28,8 +28,6 @@ print len(hsv[0])
 #s=180-190
 #v=230-250
 
-#lower_orange = np.array([0,120,180])
-#upper_orange = np.array([35,250,255])
 lower_orange = np.array([0,100,150])
 upper_orange = np.array([15,250,255])
 
