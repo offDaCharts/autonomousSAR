@@ -30,7 +30,7 @@ print len(hsv[0])
 
 #lower_orange = np.array([0,120,180])
 #upper_orange = np.array([35,250,255])
-lower_orange = np.array([0,100,100])
+lower_orange = np.array([0,100,150])
 upper_orange = np.array([35,250,255])
 
 # Threshold the HSV image to get only blue colors
