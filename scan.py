@@ -51,8 +51,8 @@ while(scanNum < maxScans):
     if lines is not None:
         print "line count: " + str(len(lines[0]))
 
-    lowerAngle = 26
-    upperAngle = 44
+    lowerAngle = 28
+    upperAngle = 42
 
     starAngleCount = 0
     if lines != None and len(lines) > 0:
@@ -75,8 +75,8 @@ while(scanNum < maxScans):
                         angle = 180 - thetaPrime - phi
                         complement = 180 - angle
                     elif rho1 < 0 and rho2 < 0:
-                        angle = 180 - abs(theta - phi)
-                        complement = 180 - angle
+                        angle = abs(180 - abs(theta - phi))
+                        complement = abs(180 - angle)
                     #print angle
                     if (angle < upperAngle and angle > lowerAngle) or (complement > lowerAngle and complement < upperAngle):
                         print angle

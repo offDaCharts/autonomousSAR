@@ -25,8 +25,8 @@ for rho,theta in lines[0]:
 
 cv2.imwrite('houghlines3.jpg',img)
 
-lowerAngle = 26
-upperAngle = 44
+lowerAngle = 28
+upperAngle = 42
 
 starAngleCount = 0
 for rho1,theta in lines[0]:
@@ -47,8 +47,8 @@ for rho1,theta in lines[0]:
             angle = 180 - thetaPrime - phi
             complement = 180 - angle
         elif rho1 < 0 and rho2 < 0:
-            angle = 180 - abs(theta - phi)
-            complement = 180 - angle
+            angle = abs(180 - abs(theta - phi))
+            complement = abs(180 - angle)
         print angle
         print complement
         print " "
