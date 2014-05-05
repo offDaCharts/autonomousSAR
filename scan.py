@@ -103,6 +103,7 @@ while(scanNum < maxScans):
         GPIO.output(7,True)
         print "Found it!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
         sleep(5)
+        GPIO.output(7,False)
         break
     else:
         GPIO.output(7,False)
