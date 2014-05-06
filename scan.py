@@ -102,9 +102,9 @@ while(scanNum < maxScans):
     if starAngleCount > 1:
         GPIO.output(7,True)
         print "Found it!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-        #time.sleep(5)
-        #GPIO.output(7,False)
-        #break
+        time.sleep(5)
+        GPIO.output(7,False)
+        break
     else:
         GPIO.output(7,False)
         print "Not found"
