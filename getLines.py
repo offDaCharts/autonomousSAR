@@ -11,7 +11,7 @@ img = cv2.imread("mask.png", 0)
 #mask.png is already binary
 edges = cv2.Canny(img,50,150,apertureSize = 3)
 
-lines = cv2.HoughLines(edges,1,np.pi/180,50)
+lines = cv2.HoughLines(edges,1,np.pi/180,65)
 for rho,theta in lines[0]:
     a = np.cos(theta)
     b = np.sin(theta)
