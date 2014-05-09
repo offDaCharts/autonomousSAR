@@ -10,8 +10,7 @@ import sys
 
 GPIO.setmode(GPIO.BOARD) ## Use board pin numbering
 GPIO.setup(7, GPIO.OUT) ## Setup GPIO Pin 7 to OUT
-
-GPIO.output(7,False)
+GPIO.output(7,False) #Initialize pin 
 
 camera = picamera.PiCamera()
 
@@ -34,26 +33,28 @@ while(scanNum < maxScans):
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
     # define range of orange color in HSV
-    #h=5-15
-    #s=180-190
-    #v=230-250
-
     lower_orange = np.array([0,100,100])
     upper_orange = np.array([25,255,255])
 
-    # Threshold the HSV image to get only orange colors
+    #Threshold the HSV image to get only orange colors
     mask = cv2.inRange(hsv, lower_orange, upper_orange)
 
+    #Recognize edges and lines
     edges = cv2.Canny(mask,50,150,apertureSize = 3)
-
     lines = cv2.HoughLines(edges,1,np.pi/180,45)
 
     if lines is not None:
         print "line count: " + str(len(lines[0]))
 
+    #Star angle is 36 degrees- look for angles around there
     lowerAngle = 31
     upperAngle = 41
 
+    #lines are given in rho theta where theta corresponds to the orientation of the line
+    #and rho to how far away it is from the center
+    #See: http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_houghlines/py_houghlines.html
+    #Note- by this algorithm each angle is counted twice. 
+    #copies of the same line are often found so the angle count can be very high if the star is in frame
     starAngleCount = 0
     if lines != None and len(lines) > 0:
         for rho1,theta in lines[0]:
@@ -87,10 +88,8 @@ while(scanNum < maxScans):
 
 
 
-    # Scanning by pixel count
-
+    # Scanning by pixel count (just color not shape detection)
     # count = np.sum(mask)/255
-
     # # Currently checking just by count of pixels matched
     # # TODO by shape
     # print "count: " + str(count)
@@ -99,7 +98,9 @@ while(scanNum < maxScans):
     # else:
     #     print "Not found"
 
+
     if starAngleCount > 1:
+        #turns pin high for 5 seconds and then ends program
         GPIO.output(7,True)
         print "Found it!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
         time.sleep(5)
@@ -110,11 +111,10 @@ while(scanNum < maxScans):
         print "Not found"
 
     print "Scans: " + str(scanNum+1)
-    
-    #time.sleep(1)
-    
+        
     scanNum += 1
     stream = io.BytesIO()
+ 
 loopTime = time.time() - startScanTime
 print loopTime    
 
